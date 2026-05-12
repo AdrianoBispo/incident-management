@@ -8,6 +8,7 @@ annotate service.Incidents with @(
             {
                 $Type : 'UI.DataField',
                 Value : title,
+                Label : '{i18n>Title}',
             },
             {
                 $Type : 'UI.DataField',
