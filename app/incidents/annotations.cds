@@ -108,7 +108,15 @@ annotate service.Incidents with {
                 {
                     $Type : 'Common.ValueListParameterInOut',
                     LocalDataProperty : customer_ID,
+                    ValueListProperty : 'ID',
+                },
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'name',
+                },
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'email',
                 },
             ],
         },
