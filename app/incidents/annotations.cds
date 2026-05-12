@@ -108,15 +108,7 @@ annotate service.Incidents with {
                 {
                     $Type : 'Common.ValueListParameterInOut',
                     LocalDataProperty : customer_ID,
-                    ValueListProperty : 'ID',
-                },
-                {
-                    $Type : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'name',
-                },
-                {
-                    $Type : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'email',
                 },
             ],
         },
@@ -156,30 +148,6 @@ annotate service.Incidents with {
 annotate service.Status with {
     code @Common.Text : descr
 };
-
-annotate service.Incidents with {
-    title @(
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'Customers',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : title,
-                    ValueListProperty : 'ID',
-                },
-                {
-                    $Type : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'name',
-                },
-                {
-                    $Type : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'email',
-                },
-            ],
-        },
-        Common.ValueListWithFixedValues : true,
-)};
 
 annotate service.Urgency with {
     code @Common.Text : descr
