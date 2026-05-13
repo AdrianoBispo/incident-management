@@ -21,7 +21,7 @@ annotate service.Incidents with @(
         {
             $Type : 'UI.CollectionFacet',
             Label : '{i18n>Overview}',
-            ID : 'i18nOverview',
+            ID : 'Overview',
             Facets : [
                 {
                     $Type : 'UI.ReferenceFacet',
@@ -53,7 +53,7 @@ annotate service.Incidents with @(
         {
             $Type : 'UI.DataField',
             Value : customer.name,
-            Label : '{i18n>Customer}',
+            Label : 'Customer',
         },
         {
             $Type : 'UI.DataField',
@@ -90,6 +90,8 @@ annotate service.Incidents with @(
             {
                 $Type : 'UI.DataField',
                 Value : status_code,
+                Criticality : status.criticality,
+                CriticalityRepresentation : #WithIcon,
             },
             {
                 $Type : 'UI.DataField',
@@ -100,49 +102,11 @@ annotate service.Incidents with @(
 );
 
 annotate service.Incidents with {
-    customer @(
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'Customers',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : customer_ID,
-                    ValueListProperty : 'ID',
-                },
-                {
-                    $Type : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'name',
-                },
-                {
-                    $Type : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'email',
-                },
-            ],
-        },
-        Common.Text : customer.name,
-        Common.Text.@UI.TextArrangement : #TextOnly,
-        Common.ValueListWithFixedValues : true,
-    )
-};
-
-annotate service.Incidents with {
     status @(
         Common.Label : '{i18n>Status}',
         Common.ValueListWithFixedValues : true,
         Common.Text : status.descr,
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'Status',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : status_code,
-                    ValueListProperty : 'descr',
-                },
-            ],
-        },
-        )
+    )
 };
 
 annotate service.Incidents with {
@@ -180,4 +144,46 @@ annotate service.Incidents.conversation with @(
         },
     ]
 );
+
+annotate service.Status with {
+    descr @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Status',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : descr,
+                    ValueListProperty : 'descr',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : true,
+        )};
+
+annotate service.Incidents with {
+    customer @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Customers',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : customer_ID,
+                    ValueListProperty : 'ID',
+                },
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'name',
+                },
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'email',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : true,
+        Common.Text : customer.name,
+        Common.Text.@UI.TextArrangement : #TextOnly,
+)};
 

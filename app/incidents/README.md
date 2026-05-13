@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Tue May 12 2026 10:31:55 GMT-0300 (Brasilia Standard Time)|
+|**Generation Date and Time**<br>Wed May 13 2026 11:14:24 GMT-0300 (Brasilia Standard Time)|
 |**App Generator**<br>SAP Fiori Application Generator|
 |**App Generator Version**<br>1.24.0|
 |**Generation Platform**<br>Visual Studio Code|
@@ -26,7 +26,7 @@ An SAP Fiori application.
 
 -   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite.  To launch the generated app, start your CAP project:  and navigate to the following location in your browser:
 
-http://localhost:4004/incidents/webapp/index.html
+http://localhost:4004/ns.incidents/index.html
 
 #### Pre-requisites:
 
