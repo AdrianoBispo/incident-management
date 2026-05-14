@@ -37,8 +37,24 @@
             data-sap-ui-bindingSyntax="complex"
         ></script>
         <script>
+            function checkAuth() {
+                return fetch('/auth/me', {
+                    method: 'GET',
+                    credentials: 'same-origin'
+                }).then(function(response) {
+                    if (response.ok) return response.json();
+                    return Promise.reject(new Error('Unauthorized'));
+                });
+            }
+
             sap.ui.getCore().attachInit(function() {
-                sap.ushell.Container.createRenderer().placeAt('content');
+                checkAuth()
+                    .then(function() {
+                        sap.ushell.Container.createRenderer().placeAt('content');
+                    })
+                    .catch(function() {
+                        window.location.href = '/login';
+                    });
             });
         </script>
     </head>

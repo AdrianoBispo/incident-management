@@ -10,7 +10,26 @@
   },
   "scripts": {
     "start": "cds-serve",
+    "watch": "cds watch --open launchpage.html#Shell-home --livereload false",
     "watch-incidents": "cds watch --open ns.incidents/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "custom",
+        "impl": "./srv/auth/custom-auth.js",
+        "users": {
+          "alice": {
+            "password": "alice",
+            "roles": ["support"]
+          },
+          "bob": {
+            "password": "bob",
+            "roles": ["support"]
+          }
+        }
+      }
+    }
   },
   "private": true,
   "workspaces": [
